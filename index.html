@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+  Atmosync | Premium Weather Experience
+</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <!-- CHART JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+<body>
+
+  <!-- WEATHER EFFECTS -->
+
+  <div id="weatherEffects"></div>
+
+  <!-- GRADIENT ORBS -->
+
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- MAIN APP -->
+
+  <main class="app-container">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+      <div class="logo">
+
+                Atmosync
+
+    </div>
+    <p class="tagline">
+    Real-Time Atmospheric Intelligence
+    </p>
+
+      <div class="search-wrapper">
+
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Search city..."
+        >
+        <div id="suggestions"></div>
+        <button id="searchBtn">
+
+          <i class="fas fa-search"></i>
+
+        </button>
+
+        <button id="locationBtn">
+
+          <i class="fas fa-location-crosshairs"></i>
+
+        </button>
+
+      </div>
+
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero-section fade-up">
+
+      <!-- LEFT -->
+
+      <div class="hero-left">
+
+        <p class="live-badge">
+
+          LIVE WEATHER
+
+        </p>
+
+        <h1 id="temp">
+
+          28°C
+
+        </h1>
+
+        <h2 id="condition">
+
+          Clear Sky
+
+        </h2>
+
+        <p id="city">
+
+          Hyderabad, India
+
+        </p>
+
+        <span id="date">
+
+          Tuesday, 4:45 PM
+
+        </span>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="hero-right">
+
+        <div class="weather-icon-wrapper">
+
+          <div id="weatherVisual">
+
+  ☀️
+
+</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- HIGHLIGHTS -->
+
+    <section class="highlights-section fade-up">
+
+      <div class="section-header">
+
+        Today's Highlights
+
+      </div>
+
+      <div class="highlights-grid">
+
+        <!-- FEELS LIKE -->
+
+        <div class="highlight-card">
+
+          <div class="card-top">
+
+            <i class="fas fa-temperature-half"></i>
+
+            <span>
+              Feels Like
+            </span>
+
+          </div>
+
+          <h2 id="feelsLike">
+
+            0°C
+
+          </h2>
+
+        </div>
+
+        <!-- HUMIDITY -->
+
+        <div class="highlight-card">
+
+          <div class="card-top">
+
+            <i class="fas fa-water"></i>
+
+            <span>
+              Humidity
+            </span>
+
+          </div>
+
+          <h2 id="humidity">
+
+            0%
+
+          </h2>
+
+        </div>
+
+        <!-- WIND -->
+
+        <div class="highlight-card">
+
+          <div class="card-top">
+
+            <i class="fas fa-wind"></i>
+
+            <span>
+              Wind Speed
+            </span>
+
+          </div>
+
+          <h2 id="wind">
+
+            0 km/h
+
+          </h2>
+
+        </div>
+
+        <!-- PRESSURE -->
+
+        <div class="highlight-card">
+
+          <div class="card-top">
+
+            <i class="fas fa-gauge-high"></i>
+
+            <span>
+              Pressure
+            </span>
+
+          </div>
+
+          <h2 id="pressure">
+
+            0 mb
+
+          </h2>
+
+        </div>
+
+        <!-- AQI -->
+
+        <div class="highlight-card">
+
+          <div class="card-top">
+
+            <i class="fas fa-lungs"></i>
+
+            <span>
+              Air Quality
+            </span>
+
+          </div>
+
+          <h2 id="aqi">
+
+            0
+
+          </h2>
+
+        </div>
+
+        <!-- UV -->
+
+        <div class="highlight-card">
+
+          <div class="card-top">
+
+            <i class="fas fa-sun"></i>
+
+            <span>
+              UV Index
+            </span>
+
+          </div>
+
+          <h2 id="uv">
+
+            0
+
+          </h2>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- HOURLY FORECAST -->
+
+    <section class="forecast-section fade-up">
+
+      <div class="section-header">
+
+        Hourly Forecast
+
+      </div>
+
+      <div
+        class="hourly-container"
+        id="hourlyForecast"
+      ></div>
+
+    </section>
+
+    <!-- WEEK FORECAST -->
+
+    <section class="forecast-section fade-up">
+
+      <div class="section-header">
+
+        3-Day Forecast
+
+      </div>
+
+      <div
+        class="daily-container"
+        id="dailyForecast"
+      ></div>
+
+    </section>
+
+    <!-- CHART -->
+
+    <section class="forecast-section fade-up">
+
+      <div class="section-header">
+
+        Temperature Analytics
+
+      </div>
+
+      <div class="chart-card">
+
+        <canvas id="weatherChart"></canvas>
+
+      </div>
+
+    </section>
+
+    <!-- SUN DETAILS -->
+
+    <section class="sun-section fade-up">
+
+      <div class="sun-card">
+
+        <i class="fas fa-sunrise"></i>
+
+        <div>
+
+          <p>
+            Sunrise
+          </p>
+
+          <h2 id="sunrise">
+
+            --
+
+          </h2>
+
+        </div>
+
+      </div>
+
+      <div class="sun-card">
+
+        <i class="fas fa-sunset"></i>
+
+        <div>
+
+          <p>
+            Sunset
+          </p>
+
+          <h2 id="sunset">
+
+            --
+
+          </h2>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- LOADING -->
+
+    <div id="loading">
+
+      <div class="loader"></div>
+
+    </div>
+
+    <!-- ERROR -->
+
+    <div id="error">
+
+      City not found.
+
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

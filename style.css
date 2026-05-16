@@ -1,0 +1,1775 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:'Inter',sans-serif;
+
+  background:#050816;
+
+  color:white;
+
+  min-height:100vh;
+
+  overflow-x:hidden;
+
+  position:relative;
+
+  padding:30px;
+
+}
+
+/* =========================
+   WEATHER EFFECTS
+========================= */
+
+#weatherEffects{
+
+  position:fixed;
+
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:-5;
+
+}
+
+/* =========================
+   GRADIENT ORBS
+========================= */
+
+.orb{
+
+  position:fixed;
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  z-index:-4;
+
+  animation:floatOrb 10s ease-in-out infinite;
+
+}
+
+.orb1{
+
+  width:300px;
+
+  height:300px;
+
+  background:#7c3aed;
+
+  top:-100px;
+
+  left:-100px;
+
+}
+
+.orb2{
+
+  width:350px;
+
+  height:350px;
+
+  background:#0ea5e9;
+
+  right:-100px;
+
+  top:20%;
+
+}
+
+.orb3{
+
+  width:300px;
+
+  height:300px;
+
+  background:#ec4899;
+
+  bottom:-100px;
+
+  left:30%;
+
+}
+
+@keyframes floatOrb{
+
+  0%{
+
+    transform:translateY(0px);
+
+  }
+
+  50%{
+
+    transform:translateY(-20px);
+
+  }
+
+  100%{
+
+    transform:translateY(0px);
+
+  }
+
+}
+
+/* =========================
+   APP CONTAINER
+========================= */
+
+.app-container{
+
+  max-width:1400px;
+
+  margin:auto;
+
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:50px;
+
+}
+
+.logo{
+
+  font-size:2rem;
+
+  font-weight:800;
+
+  background:linear-gradient(
+    90deg,
+    #38bdf8,
+    #8b5cf6
+  );
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+
+}
+
+.search-wrapper{
+
+  display:flex;
+
+  gap:15px;
+
+}
+
+.search-wrapper input{
+
+  width:320px;
+
+  padding:18px;
+
+  border:none;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  color:white;
+
+  outline:none;
+
+  font-size:1rem;
+
+}
+
+.search-wrapper input::placeholder{
+
+  color:#cbd5e1;
+
+}
+
+.search-wrapper button{
+
+  width:60px;
+
+  border:none;
+
+  border-radius:18px;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #0ea5e9,
+    #8b5cf6
+  );
+
+  transition:0.3s;
+
+}
+
+.search-wrapper button:hover{
+
+  transform:translateY(-4px);
+
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  align-items:center;
+
+  margin-bottom:60px;
+
+}
+
+.hero-left h1{
+
+  font-size:8rem;
+
+  font-weight:800;
+
+  line-height:1;
+
+  margin-bottom:20px;
+
+}
+
+.hero-left h2{
+
+  font-size:2.2rem;
+
+  color:#cbd5e1;
+
+  margin-bottom:15px;
+
+}
+
+.hero-left p{
+
+  font-size:1.2rem;
+
+  margin-bottom:10px;
+
+}
+
+.hero-left span{
+
+  color:#94a3b8;
+
+}
+
+.live-badge{
+
+  display:inline-block;
+
+  padding:10px 18px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,0.08);
+
+  margin-bottom:25px;
+
+  color:#38bdf8;
+
+  font-weight:600;
+
+}
+
+.hero-right{
+
+  display:flex;
+
+  justify-content:center;
+
+}
+
+.weather-icon-wrapper{
+
+  width:320px;
+
+  height:320px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(20px);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  animation:floating 4s ease-in-out infinite;
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,0.3);
+
+}
+
+.weather-icon-wrapper img{
+
+  width:220px;
+
+}
+
+@keyframes floating{
+
+  0%{
+
+    transform:translateY(0px);
+
+  }
+
+  50%{
+
+    transform:translateY(-18px);
+
+  }
+
+  100%{
+
+    transform:translateY(0px);
+
+  }
+
+}
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header{
+
+  font-size:2rem;
+
+  font-weight:700;
+
+  margin-bottom:25px;
+
+}
+
+/* =========================
+   HIGHLIGHTS
+========================= */
+
+.highlights-section{
+
+  margin-bottom:50px;
+
+}
+
+.highlights-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:25px;
+
+}
+
+.highlight-card{
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  border-radius:28px;
+
+  padding:30px;
+
+  backdrop-filter:blur(18px);
+
+  transition:0.4s;
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.highlight-card::before{
+
+  content:\"\";
+
+  position:absolute;
+
+  width:200px;
+
+  height:200px;
+
+  background:rgba(56,189,248,0.12);
+
+  border-radius:50%;
+
+  top:-100px;
+
+  right:-100px;
+
+}
+
+.highlight-card:hover{
+
+  transform:translateY(-8px);
+
+}
+
+.card-top{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  margin-bottom:25px;
+
+  color:#cbd5e1;
+
+}
+
+.card-top i{
+
+  font-size:1.5rem;
+
+  color:#38bdf8;
+
+}
+
+.highlight-card h2{
+
+  font-size:2.2rem;
+
+}
+
+/* =========================
+   FORECAST SECTION
+========================= */
+
+.forecast-section{
+
+  margin-bottom:50px;
+
+}
+
+/* =========================
+   HOURLY FORECAST
+========================= */
+
+.hourly-container{
+
+  display:flex;
+
+  gap:20px;
+
+  overflow-x:auto;
+
+  padding-bottom:10px;
+
+}
+
+.hour-card{
+
+  min-width:150px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  border-radius:24px;
+
+  padding:25px;
+
+  text-align:center;
+
+  backdrop-filter:blur(18px);
+
+  transition:0.3s;
+
+}
+
+.hour-card:hover{
+
+  transform:translateY(-6px);
+
+}
+
+.hour-card img{
+
+  width:70px;
+
+  margin:15px 0;
+
+}
+
+.hour-card p{
+
+  color:#cbd5e1;
+
+  font-size:0.9rem;
+
+}
+
+/* =========================
+   DAILY FORECAST
+========================= */
+
+.daily-container{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(250px,1fr));
+
+  gap:25px;
+
+}
+
+.day-card{
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  border-radius:28px;
+
+  padding:30px;
+
+  text-align:center;
+
+  backdrop-filter:blur(18px);
+
+  transition:0.3s;
+
+}
+
+.day-card:hover{
+
+  transform:translateY(-8px);
+
+}
+
+.day-card img{
+
+  width:90px;
+
+  margin:15px 0;
+
+}
+
+.day-card p{
+
+  color:#cbd5e1;
+
+}
+
+/* =========================
+   CHART CARD
+========================= */
+
+.chart-card{
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  border-radius:30px;
+
+  padding:30px;
+
+  backdrop-filter:blur(18px);
+
+}
+
+/* =========================
+   SUN SECTION
+========================= */
+
+.sun-section{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:25px;
+
+  margin-bottom:50px;
+
+}
+
+.sun-card{
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  border-radius:28px;
+
+  padding:35px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:25px;
+
+  backdrop-filter:blur(18px);
+
+}
+
+.sun-card i{
+
+  font-size:3rem;
+
+  color:#fbbf24;
+
+}
+
+.sun-card p{
+
+  color:#cbd5e1;
+
+  margin-bottom:8px;
+
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loading{
+
+  display:none;
+
+  justify-content:center;
+
+  margin:30px 0;
+
+}
+
+.loader{
+
+  width:60px;
+
+  height:60px;
+
+  border:6px solid rgba(255,255,255,0.1);
+
+  border-top:6px solid #38bdf8;
+
+  border-radius:50%;
+
+  animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+  100%{
+
+    transform:rotate(360deg);
+
+  }
+
+}
+
+/* =========================
+   ERROR
+========================= */
+
+#error{
+
+  display:none;
+
+  text-align:center;
+
+  color:#f87171;
+
+  font-size:1.1rem;
+
+  margin-top:20px;
+
+}
+
+/* =========================
+   FADE UP ANIMATION
+========================= */
+
+.fade-up{
+
+  animation:fadeUp 1s ease;
+
+}
+
+@keyframes fadeUp{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+  }
+
+}
+
+/* =========================
+   RAIN EFFECT
+========================= */
+
+.rain-drop{
+
+  position:absolute;
+
+  width:2px;
+
+  height:100px;
+
+  background:rgba(255,255,255,0.4);
+
+  animation:rain linear infinite;
+
+}
+
+@keyframes rain{
+
+  0%{
+
+    transform:translateY(-100px);
+
+  }
+
+  100%{
+
+    transform:translateY(120vh);
+
+  }
+
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+  height:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:#38bdf8;
+
+  border-radius:20px;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+  .hero-section{
+
+    grid-template-columns:1fr;
+
+    gap:40px;
+
+  }
+
+  .sun-section{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
+@media(max-width:768px){
+
+  body{
+
+    padding:20px;
+
+  }
+
+  .topbar{
+
+    flex-direction:column;
+
+    gap:25px;
+
+  }
+
+  .search-wrapper{
+
+    width:100%;
+
+  }
+
+  .search-wrapper input{
+
+    width:100%;
+
+  }
+
+  .hero-left h1{
+
+    font-size:5rem;
+
+  }
+
+  .hero-left h2{
+
+    font-size:1.5rem;
+
+  }
+
+  .weather-icon-wrapper{
+
+    width:250px;
+
+    height:250px;
+
+  }
+
+  .weather-icon-wrapper img{
+
+    width:170px;
+
+  }
+
+}
+/* =========================
+   WEATHER EFFECTS ENGINE
+========================= */
+
+#weatherEffects{
+
+  position:fixed;
+
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:-10;
+
+}
+
+/* =========================
+   RAIN EFFECT
+========================= */
+
+.rain-drop{
+
+  position:absolute;
+
+  width:2px;
+
+  height:120px;
+
+  background:
+  linear-gradient(
+    transparent,
+    rgba(255,255,255,0.7)
+  );
+
+  animation:rainFall linear infinite;
+
+}
+
+@keyframes rainFall{
+
+  0%{
+
+    transform:
+    translateY(-150px)
+    rotate(15deg);
+
+  }
+
+  100%{
+
+    transform:
+    translateY(120vh)
+    rotate(15deg);
+
+  }
+
+}
+
+/* =========================
+   CLOUD EFFECT
+========================= */
+
+.cloud{
+
+  position:absolute;
+
+  width:300px;
+
+  height:120px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  border-radius:100px;
+
+  filter:blur(8px);
+
+  animation:moveClouds linear infinite;
+
+}
+
+.cloud::before{
+
+  content:\"\";
+
+  position:absolute;
+
+  width:140px;
+
+  height:140px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  border-radius:50%;
+
+  top:-60px;
+
+  left:40px;
+
+}
+
+.cloud::after{
+
+  content:\"\";
+
+  position:absolute;
+
+  width:180px;
+
+  height:180px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  border-radius:50%;
+
+  top:-80px;
+
+  right:40px;
+
+}
+
+@keyframes moveClouds{
+
+  0%{
+
+    transform:
+    translateX(-400px);
+
+  }
+
+  100%{
+
+    transform:
+    translateX(140vw);
+
+  }
+
+}
+
+
+
+/* =========================
+   LIGHTNING FLASH
+========================= */
+
+.lightning{
+
+  position:fixed;
+
+  inset:0;
+
+  background:white;
+
+  opacity:0;
+
+  animation:flash 5s infinite;
+
+  z-index:-9;
+
+}
+
+@keyframes flash{
+
+  0%{
+
+    opacity:0;
+
+  }
+
+  2%{
+
+    opacity:0.8;
+
+  }
+
+  4%{
+
+    opacity:0;
+
+  }
+
+  100%{
+
+    opacity:0;
+
+  }
+
+}
+
+/* =========================
+   SEARCH SUGGESTIONS
+========================= */
+
+.search-wrapper{
+
+  position:relative;
+
+}
+
+#suggestions{
+
+  position:absolute;
+
+  top:80px;
+
+  left:0;
+
+  width:100%;
+
+  background:
+  rgba(15,23,42,0.95);
+
+  backdrop-filter:blur(18px);
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  z-index:999;
+
+  border:
+  1px solid rgba(255,255,255,0.1);
+
+}
+
+.suggestion-item{
+
+  padding:16px 20px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+}
+
+.suggestion-item:hover{
+
+  background:
+  rgba(255,255,255,0.08);
+
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+body{
+
+  background-size:400% 400%;
+
+  animation:bgShift 15s ease infinite;
+
+}
+
+@keyframes bgShift{
+
+  0%{
+
+    background-position:0% 50%;
+
+  }
+
+  50%{
+
+    background-position:100% 50%;
+
+  }
+
+  100%{
+
+    background-position:0% 50%;
+
+  }
+
+}
+/* ===================================
+   ADVANCED WEATHER ATMOSPHERE ENGINE
+=================================== */
+
+/* WEATHER EFFECTS CONTAINER */
+
+#weatherEffects{
+
+  position:fixed;
+
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:-20;
+
+}
+
+/* ===================================
+   STARS
+=================================== */
+
+.star{
+
+  position:absolute;
+
+  width:3px;
+
+  height:3px;
+
+  background:white;
+
+  border-radius:50%;
+
+  animation:twinkle 2s infinite;
+
+}
+
+@keyframes twinkle{
+
+  0%{
+
+    opacity:0.2;
+
+  }
+
+  50%{
+
+    opacity:1;
+
+  }
+
+  100%{
+
+    opacity:0.2;
+
+  }
+
+}
+
+/* ===================================
+   MOON GLOW
+=================================== */
+
+.moon{
+
+  position:absolute;
+
+  width:180px;
+
+  height:180px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+    #f8fafc,
+    #cbd5e1,
+    transparent
+  );
+
+  top:80px;
+
+  right:120px;
+
+  filter:blur(2px);
+
+  box-shadow:
+  0 0 80px rgba(255,255,255,0.4);
+
+}
+
+/* ===================================
+   SNOW
+=================================== */
+
+.snowflake{
+
+  position:absolute;
+
+  color:white;
+
+  font-size:1rem;
+
+  animation:snowFall linear infinite;
+
+}
+
+@keyframes snowFall{
+
+  0%{
+
+    transform:
+    translateY(-100px)
+    translateX(0px);
+
+  }
+
+  100%{
+
+    transform:
+    translateY(120vh)
+    translateX(80px);
+
+  }
+
+}
+
+/* ===================================
+   FOG
+=================================== */
+
+.fog-layer{
+
+  position:absolute;
+
+  width:200%;
+
+  height:220px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  filter:blur(50px);
+
+  animation:moveFog 25s linear infinite;
+
+}
+
+@keyframes moveFog{
+
+  0%{
+
+    transform:
+    translateX(-30%);
+
+  }
+
+  100%{
+
+    transform:
+    translateX(0%);
+
+  }
+
+}
+
+/* ===================================
+   WIND PARTICLES
+=================================== */
+
+.wind-particle{
+
+  position:absolute;
+
+  width:120px;
+
+  height:2px;
+
+  background:
+  linear-gradient(
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+
+  animation:windMove linear infinite;
+
+}
+
+@keyframes windMove{
+
+  0%{
+
+    transform:
+    translateX(-200px);
+
+  }
+
+  100%{
+
+    transform:
+    translateX(120vw);
+
+  }
+
+}
+
+/* ===================================
+   BETTER CLOUDS
+=================================== */
+
+.cloud{
+
+  position:absolute;
+
+  width:420px;
+
+  height:140px;
+
+  background:
+  rgba(255,255,255,0.07);
+
+  border-radius:100px;
+
+  filter:blur(12px);
+
+  animation:moveClouds linear infinite;
+
+}
+
+.cloud::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:200px;
+
+  height:200px;
+
+  background:
+  rgba(255,255,255,0.07);
+
+  border-radius:50%;
+
+  top:-90px;
+
+  left:40px;
+
+}
+
+.cloud::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:240px;
+
+  height:240px;
+
+  background:
+  rgba(255,255,255,0.07);
+
+  border-radius:50%;
+
+  top:-110px;
+
+  right:40px;
+
+}
+
+@keyframes moveClouds{
+
+  0%{
+
+    transform:
+    translateX(-500px);
+
+  }
+
+  100%{
+
+    transform:
+    translateX(150vw);
+
+  }
+
+}
+
+/* ===================================
+   SUN RAYS
+=================================== */
+
+.sun-rays{
+
+  position:absolute;
+
+  width:600px;
+
+  height:600px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+    rgba(255,200,0,0.25),
+    transparent
+  );
+
+  top:-150px;
+
+  right:-150px;
+
+  animation:rotateSun 20s linear infinite;
+
+}
+
+@keyframes rotateSun{
+
+  100%{
+
+    transform:rotate(360deg);
+
+  }
+
+}
+
+/* ===================================
+   LIGHTNING
+=================================== */
+
+.lightning{
+
+  position:fixed;
+
+  inset:0;
+
+  background:white;
+
+  opacity:0;
+
+  animation:flash 6s infinite;
+
+}
+
+@keyframes flash{
+
+  0%{
+
+    opacity:0;
+
+  }
+
+  1%{
+
+    opacity:0.9;
+
+  }
+
+  2%{
+
+    opacity:0;
+
+  }
+
+  100%{
+
+    opacity:0;
+
+  }
+
+}
+/* ===================================
+   PREMIUM WEATHER VISUAL
+=================================== */
+
+#weatherVisual{
+
+  width:260px;
+
+  height:260px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:7rem;
+
+  position:relative;
+
+  overflow:hidden;
+
+  backdrop-filter:blur(20px);
+
+  background:
+  rgba(255,255,255,0.08);
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,0.4),
+  inset 0 0 40px rgba(255,255,255,0.08);
+
+  animation:
+  floating 5s ease-in-out infinite;
+
+}
+
+/* SUNNY */
+
+.sun-weather{
+
+  background:
+  radial-gradient(
+    rgba(255,200,0,0.25),
+    rgba(255,140,0,0.08)
+  );
+
+  box-shadow:
+  0 0 80px rgba(255,180,0,0.4);
+
+}
+
+/* CLOUDY */
+
+.cloud-weather{
+
+  background:
+  radial-gradient(
+    rgba(255,255,255,0.15),
+    rgba(148,163,184,0.08)
+  );
+
+  box-shadow:
+  0 0 80px rgba(255,255,255,0.1);
+
+}
+
+/* RAIN */
+
+.rain-weather{
+
+  background:
+  radial-gradient(
+    rgba(59,130,246,0.2),
+    rgba(15,23,42,0.08)
+  );
+
+  box-shadow:
+  0 0 80px rgba(59,130,246,0.3);
+
+}
+
+/* NIGHT */
+
+.night-weather{
+
+  background:
+  radial-gradient(
+    rgba(255,255,255,0.08),
+    rgba(15,23,42,0.08)
+  );
+
+  box-shadow:
+  0 0 80px rgba(255,255,255,0.12);
+
+}
+
+/* SNOW */
+
+.snow-weather{
+
+  background:
+  radial-gradient(
+    rgba(255,255,255,0.25),
+    rgba(203,213,225,0.08)
+  );
+
+  box-shadow:
+  0 0 80px rgba(255,255,255,0.25);
+
+}
+
+/* MIST */
+
+.mist-weather{
+
+  background:
+  radial-gradient(
+    rgba(255,255,255,0.08),
+    rgba(148,163,184,0.08)
+  );
+
+  box-shadow:
+  0 0 80px rgba(255,255,255,0.08);
+
+}
+
+/* ===================================
+   PREMIUM GLASS CARDS
+=================================== */
+
+.highlight-card,
+.day-card,
+.hour-card,
+.chart-card,
+.sun-card{
+
+  background:
+  rgba(255,255,255,0.06);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.25),
+  inset 0 0 20px rgba(255,255,255,0.04);
+
+}
+
+/* ===================================
+   PREMIUM HOVER
+=================================== */
+
+.highlight-card:hover,
+.day-card:hover,
+.hour-card:hover,
+.sun-card:hover{
+
+  transform:
+  translateY(-10px)
+  scale(1.02);
+
+}
+
+/* ===================================
+   SUNNY PARTICLES
+=================================== */
+
+.sun-particle{
+
+  position:absolute;
+
+  width:6px;
+
+  height:6px;
+
+  border-radius:50%;
+
+  background:
+  rgba(255,255,255,0.8);
+
+  animation:
+  floatParticle linear infinite;
+
+}
+
+@keyframes floatParticle{
+
+  0%{
+
+    transform:
+    translateY(100vh)
+    translateX(0px);
+
+    opacity:0;
+
+  }
+
+  20%{
+
+    opacity:1;
+
+  }
+
+  100%{
+
+    transform:
+    translateY(-100px)
+    translateX(100px);
+
+    opacity:0;
+
+  }
+
+}
+
+/* ===================================
+   CHART GLOW
+=================================== */
+
+.chart-card{
+
+  box-shadow:
+  0 0 40px rgba(56,189,248,0.12);
+
+}
+.tagline{
+
+  font-size:0.85rem;
+
+  color:#cbd5e1;
+
+  margin-top:4px;
+
+  letter-spacing:1px;
+
+}
