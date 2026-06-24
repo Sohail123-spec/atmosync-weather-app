@@ -14,11 +14,6 @@
 - **Responsive modern UI** across devices
 
 ---
-
-## ⚠️ Known Issue
-
-The live demo currently shows "City not found" with zeroed-out stats on load — this points to the WeatherAPI key not being set correctly for the deployed version. Check that the API key in `script.js` is valid and that the request isn't being blocked by API quota or CORS on GitHub Pages before pointing people at the live link.
-
 ---
 
 ## 🛠️ Tech Stack
