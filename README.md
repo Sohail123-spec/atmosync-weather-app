@@ -1,7 +1,7 @@
 # 🌦️ AtmoSync
 **A premium real-time weather forecasting app with immersive atmospheric animations and dynamic themes.**
 
-🔗 **Live:** _add your deployed link here if hosted (Vercel/Netlify/GitHub Pages)_
+🔗 **Live:** [sohail123-spec.github.io/atmosync-weather-app](https://sohail123-spec.github.io/atmosync-weather-app/)
 
 ---
 
@@ -15,6 +15,12 @@
 
 ---
 
+## ⚠️ Known Issue
+
+The live demo currently shows "City not found" with zeroed-out stats on load — this points to the WeatherAPI key not being set correctly for the deployed version. Check that the API key in `script.js` is valid and that the request isn't being blocked by API quota or CORS on GitHub Pages before pointing people at the live link.
+
+---
+
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
@@ -23,6 +29,7 @@
 | Styling | CSS3 |
 | Interactivity | Vanilla JavaScript |
 | Weather Data | [WeatherAPI](https://www.weatherapi.com/) |
+| Hosting | GitHub Pages |
 
 ---
 
